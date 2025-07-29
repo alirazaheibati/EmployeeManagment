@@ -10,6 +10,7 @@ import UserData from "@/app/employees/[id]/Components/UserData";
 import React from "react";
 import SalariesBox from "@/app/employees/[id]/Components/SalariesBox";
 import { toPersianDigits } from "@/lib/utils";
+import ProtectedRoute from "@/app/login/components/ProtectedRoute";
 
 const EmployeePage = () => {
     const { id } = useParams();
@@ -25,6 +26,7 @@ const EmployeePage = () => {
 
     return (
         <>
+        <ProtectedRoute>
             <div className='grid grid-cols-3 grid-rows-1 gap-2 mb-4'>
                 <Card>
                     <CardTitle>
@@ -71,6 +73,7 @@ const EmployeePage = () => {
                 <AddressCard employeeId={employee.id} />
                 <SalariesBox employee={employee}/>
             </div>
+        </ProtectedRoute>
         </>
     );
 }

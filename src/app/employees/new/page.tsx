@@ -7,6 +7,7 @@ import {useState} from "react";
 import {useFormik} from "formik";
 import * as yup from "yup";
 import NewUserModal from "./Components/newUserModal";
+import ProtectedRoute from "@/app/login/components/ProtectedRoute";
 
 
 const validationSchema = yup.object({
@@ -64,6 +65,7 @@ const NewEmployees = ()=>{
 
     return (
         <>
+        <ProtectedRoute>
             <form onSubmit={formik.handleSubmit}>
             <div>
                 <Card className='mb-4'>
@@ -222,7 +224,7 @@ const NewEmployees = ()=>{
             {user && (
                 <NewUserModal open={showModal} onOpenChange={setShowModal} values={user} />
             )}
-
+        </ProtectedRoute>
         </>
     )
 }
